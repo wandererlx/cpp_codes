@@ -17,3 +17,5 @@ _deps
 .DS_Store
 cmake-build-debug-wsl
 cmake-build-debug
+build
+cmake-build
