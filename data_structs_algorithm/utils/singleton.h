@@ -53,4 +53,21 @@ class Singleton2 {
 Singleton2::Ptr Singleton2::m_instance_ptr = nullptr;
 std::mutex Singleton2::m_mutex;
 
+
+// 线程安全的饿汉模式
+class Singleton3 {
+ public:
+  Singleton3(Singleton3&) = delete;
+  Singleton3& operator=(const Singleton3&) = delete;
+  static Singleton3* Instance() {
+    return m_instance_ptr;
+  }
+
+ private:
+  Singleton3() { std::cout << "constructor called!" << std::endl; }
+  static Singleton3* m_instance_ptr;
+};
+
+Singleton3* Singleton3::m_instance_ptr = new Singleton3();
+
 #endif  // CPP_TOOLS_SINGLETON_H
